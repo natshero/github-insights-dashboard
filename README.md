@@ -115,6 +115,18 @@ Tema claro/escuro controlado pelo **ThemeProvider** do `next-themes`.
 
 ---
 
+## ✅ Integração Contínua (GitHub Actions)
+
+Este repositório possui um workflow de CI em `.github/workflows/ci.yml` que roda automaticamente:
+
+- `npm ci`
+- `npm run lint`
+- `npm test`
+
+em cada push e pull request para a branch `main`.
+
+---
+
 ## 📄 Licença
 
 Este projeto é apenas demonstrativo e pode ser utilizado livremente para estudos e testes.

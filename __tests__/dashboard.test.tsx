@@ -3,6 +3,8 @@ import userEvent from "@testing-library/user-event";
 
 import { GitHubDashboard } from "@/components/Dashboard";
 
+import type { GitHubRepo } from "@/types/github";
+
 jest.mock("@/services/github-api", () => ({
   fetchGitHubUser: jest.fn(),
   fetchGitHubRepos: jest.fn(),
@@ -99,8 +101,8 @@ describe("GitHubDashboard", () => {
       public_repos: 50,
     };
 
-    const firstRepos: any[] = [];
-    const secondRepos = [
+    const firstRepos: GitHubRepo[] = [];
+    const secondRepos: GitHubRepo[] = [
       {
         id: 99,
         name: "mock-repo-1",
@@ -109,7 +111,7 @@ describe("GitHubDashboard", () => {
         language: "TypeScript",
         html_url: "https://github.com/vercel/mock-repo-1",
         updated_at: "2024-02-01T00:00:00Z",
-      },
+      } as GitHubRepo,
     ];
 
     (fetchGitHubUser as jest.Mock).mockResolvedValue(mockUser);
