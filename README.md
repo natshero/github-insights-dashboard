@@ -41,10 +41,10 @@ Um dashboard simples e elegante para visualizar dados de usuários do GitHub, in
 
 | Funcionalidade | Preview |
 |----------------|---------|
-| Tela de Busca | `public/screenshots/search.png` |
-| Perfil | `public/screenshots/profile.png` |
-| Repositórios | `public/screenshots/repos.png` |
-| Insights | `public/screenshots/charts.png` |
+| **Tela de Busca** | [![Busca](./public/screenshots/search.png)](./public/screenshots/search.png) |
+| **Perfil** | [![Perfil](./public/screenshots/profile.png)](./public/screenshots/profile.png) |
+| **Repositórios** | [![Repositórios](./public/screenshots/repos.png)](./public/screenshots/repos.png) |
+| **Insights** | [![Insights](./public/screenshots/charts.png)](./public/screenshots/charts.png) |
 
 ---
 
