@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitHub Insights Dashboard
 
-## Getting Started
+Um dashboard simples e elegante para visualizar dados de usuários do GitHub, incluindo perfil, repositórios públicos e gráficos de insights.
 
-First, run the development server:
+Este projeto foi desenvolvido utilizando **Next.js 16**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, **Recharts** e **Jest** para testes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Funcionalidades
+
+- Buscar qualquer usuário do GitHub
+- Exibir perfil (avatar, nome, bio, links, seguidores…)
+- Listagem de repositórios públicos (ordenados por data)
+- Mock de repositórios criados em tempo real (a cada 30s)
+- Gráficos de insights:
+  - Linguagens mais utilizadas
+  - Total de estrelas por linguagem
+- Tema claro/escuro
+- Testes automatizados com Jest + Testing Library
+
+---
+
+## 🧩 Arquitetura da Aplicação
+
+A aplicação segue uma estrutura simples e modular:
+
+```
+Busca → Carrega usuário → Carrega repositórios → Renderiza UI
+                             ↓
+                Simulação de repositórios (30s)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Camada de UI** (componentes ShadCN)  
+- **Hook de controle (`useDashboard`)** para lógica, estados e side effects  
+- **Serviço de API (`services/github-api.ts`)**  
+- **Componentes desacoplados**:  
+  - UserSearchForm  
+  - UserProfileCard  
+  - RepoList  
+  - RepoCard  
+  - RepoInsightsCharts  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Tecnologias
 
-## Learn More
+- **Next.js 16 / App Router**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **Recharts**
+- **Axios**
+- **Jest + React Testing Library**
+- **next-themes** (tema claro/escuro)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ▶️ Como rodar localmente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Instalar dependências
+npm install
 
-## Deploy on Vercel
+# Rodar em modo desenvolvimento
+npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Rodar testes
+npm test
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O projeto sobe em:
+```
+http://localhost:3000
+```
+
+---
+
+## 🧪 Testes
+
+Os testes cobrem:
+
+- Renderização inicial do dashboard
+- Busca de usuário
+- Renderização de repositórios
+- Inserção de repositórios simulados (mock do setInterval)
+
+Para rodar:
+
+```bash
+npm test
+```
+
+---
+
+## 📁 Estrutura resumida
+
+```
+src/
+ ├─ app/
+ │   ├─ page.tsx
+ │   └─ layout.tsx
+ ├─ components/
+ ├─ services/
+ ├─ types/
+ ├─ lib/
+ ├─ styles/
+ └─ __tests__/
+```
+
+---
+
+## 🎨 Tema
+
+Tema claro/escuro controlado pelo **ThemeProvider** do `next-themes`.
+
+---
+
+## 📄 Licença
+
+Este projeto é apenas demonstrativo e pode ser utilizado livremente para estudos e testes.
