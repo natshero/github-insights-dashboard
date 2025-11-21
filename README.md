@@ -1,44 +1,62 @@
 # GitHub Insights Dashboard
 
-Um dashboard simples e elegante para visualizar dados de usuários do GitHub, incluindo perfil, repositórios públicos e gráficos de insights.
+[![CI](https://img.shields.io/github/actions/workflow/status/natshero/github-insights-dashboard/ci.yml?label=CI)](https://github.com/natshero/github-insights-dashboard/actions)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Este projeto foi desenvolvido utilizando **Next.js 16**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, **Recharts** e **Jest** para testes.
+Um dashboard simples e elegante para visualizar dados de usuários do GitHub, incluindo perfil, repositórios públicos e gráficos de insights.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- Buscar qualquer usuário do GitHub
-- Exibir perfil (avatar, nome, bio, links, seguidores…)
-- Listagem de repositórios públicos (ordenados por data)
-- Mock de repositórios criados em tempo real (a cada 30s)
-- Gráficos de insights:
-  - Linguagens mais utilizadas
-  - Total de estrelas por linguagem
-- Tema claro/escuro
-- Testes automatizados com Jest + Testing Library
+- Buscar qualquer usuário do GitHub  
+- Exibir perfil (avatar, nome, bio, links, seguidores…)  
+- Listagem de repositórios públicos (ordenados por data)  
+- Mock de repositórios em tempo real (a cada 30s)  
+- Gráficos de insights (linguagens e estrelas por linguagem)  
+- Tema claro/escuro  
+- Testes automatizados  
+
+---
+
+## 🧭 Navegação rápida
+
+- [Screenshots](#-screenshots)  
+- [Arquitetura da Aplicação](#-arquitetura-da-aplicação)  
+- [Tecnologias](#-tecnologias)  
+- [Como rodar localmente](#️-como-rodar-localmente)  
+- [Testes](#-testes)  
+- [Estrutura de Pastas](#-estrutura-resumida)  
+- [Tema](#-tema)  
+- [CI/CD](#-integração-contínua-github-actions)  
+- [Docker](#-docker)  
+- [Licença](#-licença)  
+
+---
+
+## 📸 Screenshots
+
+| Funcionalidade | Preview |
+|----------------|---------|
+| Tela de Busca | `public/screenshots/search.png` |
+| Perfil | `public/screenshots/profile.png` |
+| Repositórios | `public/screenshots/repos.png` |
+| Insights | `public/screenshots/charts.png` |
 
 ---
 
 ## 🧩 Arquitetura da Aplicação
 
-A aplicação segue uma estrutura simples e modular:
-
 ```
-Busca → Carrega usuário → Carrega repositórios → Renderiza UI
-                             ↓
-                Simulação de repositórios (30s)
+UserSearchForm → useDashboard → Serviços (API GitHub)
+                         ↓
+           Mock de repositórios (intervalo 30s)
+                         ↓
+ UI: UserProfile, RepoList, RepoCard, RepoInsightsCharts
 ```
-
-- **Camada de UI** (componentes ShadCN)  
-- **Hook de controle (`useDashboard`)** para lógica, estados e side effects  
-- **Serviço de API (`services/github-api.ts`)**  
-- **Componentes desacoplados**:  
-  - UserSearchForm  
-  - UserProfileCard  
-  - RepoList  
-  - RepoCard  
-  - RepoInsightsCharts  
 
 ---
 
@@ -50,25 +68,21 @@ Busca → Carrega usuário → Carrega repositórios → Renderiza UI
 - **shadcn/ui**
 - **Recharts**
 - **Axios**
-- **Jest + React Testing Library**
-- **next-themes** (tema claro/escuro)
+- **Jest + Testing Library**
+- **next-themes**
+- **Docker (produção)**
 
 ---
 
 ## ▶️ Como rodar localmente
 
 ```bash
-# Instalar dependências
 npm install
-
-# Rodar em modo desenvolvimento
 npm run dev
-
-# Rodar testes
-npm test
 ```
 
-O projeto sobe em:
+Acesse:
+
 ```
 http://localhost:3000
 ```
@@ -76,15 +90,6 @@ http://localhost:3000
 ---
 
 ## 🧪 Testes
-
-Os testes cobrem:
-
-- Renderização inicial do dashboard
-- Busca de usuário
-- Renderização de repositórios
-- Inserção de repositórios simulados (mock do setInterval)
-
-Para rodar:
 
 ```bash
 npm test
@@ -97,8 +102,6 @@ npm test
 ```
 src/
  ├─ app/
- │   ├─ page.tsx
- │   └─ layout.tsx
  ├─ components/
  ├─ services/
  ├─ types/
@@ -111,42 +114,39 @@ src/
 
 ## 🎨 Tema
 
-Tema claro/escuro controlado pelo **ThemeProvider** do `next-themes`.
+O tema claro/escuro é controlado automaticamente via:
+
+- `next-themes`
+- Variáveis CSS no `globals.css`
 
 ---
 
 ## ✅ Integração Contínua (GitHub Actions)
 
-Este repositório possui um workflow de CI em `.github/workflows/ci.yml` que roda automaticamente:
+Arquivo:
+
+```
+.github/workflows/ci.yml
+```
+
+Fluxo:
 
 - `npm ci`
 - `npm run lint`
 - `npm test`
 
-em cada push e pull request para a branch `main`.
-
 ---
 
 ## 🐳 Docker
 
-O projeto inclui um `Dockerfile` de build multi-stage para rodar o app em modo produção.
-
-Build da imagem
-Executar o container
-Usar Docker Compose (opcional)
-
-### Build
-
 ```bash
-
 docker build -t github-insights-dashboard .
-
 docker run -p 3000:3000 github-insights-dashboard
-
 docker compose up --build
 ```
+
 ---
 
 ## 📄 Licença
 
-Este projeto é apenas demonstrativo e pode ser utilizado livremente para estudos e testes.
+Livre para uso em estudos e testes.
