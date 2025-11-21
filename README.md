@@ -127,6 +127,26 @@ em cada push e pull request para a branch `main`.
 
 ---
 
+## 🐳 Docker
+
+O projeto inclui um `Dockerfile` de build multi-stage para rodar o app em modo produção.
+
+Build da imagem
+Executar o container
+Usar Docker Compose (opcional)
+
+### Build
+
+```bash
+
+docker build -t github-insights-dashboard .
+
+docker run -p 3000:3000 github-insights-dashboard
+
+docker compose up --build
+```
+---
+
 ## 📄 Licença
 
 Este projeto é apenas demonstrativo e pode ser utilizado livremente para estudos e testes.

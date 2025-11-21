@@ -1,4 +1,4 @@
-import { ModeToggle } from "@/components/ModleTigle";
+import { ModeToggle } from "@/components/ModeToggle";
 import { GitHubDashboard } from "@/components/Dashboard";
 
 export const HomePage: React.FC = () => {

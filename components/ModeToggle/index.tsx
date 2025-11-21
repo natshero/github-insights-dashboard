@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
+
 import { Switch } from "@/components/ui/switch";
 
 export const ModeToggle: React.FC = () => {
